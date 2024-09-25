@@ -1,0 +1,41 @@
+/*Crie um programa que lê vários números inteiros e positivos e imprima o produto dos números
+ímpares e a soma dos números pares. Observação: O programa será encerrado quando um
+valor negativo for inserido.*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int numero;
+        int somaPar = 0;
+        int produtoImpar = 1;
+        boolean temImpar = false; // verifica se tem numero impar
+
+        System.out.println("Digite números inteiros e positivos (número negativo para encerrar):");
+
+        while (true) {
+            numero = scanner.nextInt();
+
+            if (numero < 0) {
+                break;
+            }
+            
+            if (numero % 2 == 0) {
+                somaPar += numero;
+            } else {
+                produtoImpar *= numero;
+                temImpar = true;
+            }
+        }
+        
+        System.out.println("Soma dos números pares: " + somaPar);
+        if (temImpar) {
+            System.out.println("Produto dos números ímpares: " + produtoImpar);
+        } else {
+            System.out.println("Nenhum número ímpar foi inserido.");
+        }
+        scanner.close();
+    }
+}
