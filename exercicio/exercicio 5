@@ -1,0 +1,58 @@
+/*5. Faça um algoritmo que receba a idade, altura e peso de 10 pessoas. Calcule e mostre:
+(a) a quantidade de pessoas com idade superior a 50 anos;
+(b) a média das alturas das pessoas com idade entre 10 e 20 anos;
+(c) a porcentagem de pessoas com peso inferior a 40 quilos entre todas as pessoas.*/
+
+import java.util.Scanner;//entrada para o usuario digitar
+
+public class Main {
+    public static void main(String[] args) {
+        int opt;
+
+        Scanner scanner = new Scanner(System.in);
+
+        int qPessoa = 3;
+        int qPessoaMaior50 = 0;
+        double mediaAlturaPessoa10a20 = 0;
+        int qPessoa10a20 = 0;
+        double porcentagemPessoasPesoMenor40;
+        int qPessoasPesoMenor40 = 0;
+        int idade;
+        double peso, altura;
+        System.out.println("Vamos começar!!");
+
+        for ( int i = 0; i <= qPessoa; i++){
+            System.out.println("Informe a idade: ");
+            idade = scanner.nextInt();
+
+            System.out.println("\nInforme a altura: ");
+            altura = scanner.nextDouble();
+
+            System.out.println("\nInforme a peso: ");
+            peso = scanner.nextDouble();
+
+            if (idade >= 50 ) {
+                qPessoaMaior50++;
+            } else if ( idade > 10 || idade < 20) {
+                mediaAlturaPessoa10a20 += altura ;
+                qPessoa10a20++;
+            }
+            if( peso <= 40){
+                qPessoasPesoMenor40++; // shift + f6 conseguimos modificar a nomeclatura de toda variável.
+            }
+        }
+        System.out.println("\n\n");
+        System.out.println("Quantidade de pessoas com idade superior a 50 anos " +qPessoaMaior50);
+
+        System.out.println("\n\n");
+
+        if (qPessoa10a20 >0){
+            mediaAlturaPessoa10a20 = mediaAlturaPessoa10a20 / qPessoa10a20;
+            System.out.printf("Média das alturas das pessoas entre 10 e 20: " , "%.2f\n" , mediaAlturaPessoa10a20);
+        } else {
+            System.out.println("Não existem pessoas de idade entre 10 e 20 anos");
+        }
+        porcentagemPessoasPesoMenor40 = (double) qPessoasPesoMenor40 / qPessoa;// colocar o "double" antes da variável modifica seu contexto
+
+    }
+}
