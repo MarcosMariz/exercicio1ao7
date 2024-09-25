@@ -1,0 +1,19 @@
+/*1. Crie um programa que imprima a sequência dos 100 próximos números inteiros, seguintes a um
+valor fornecido pela pessoa utilizadora.*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+        /*Crie um programa que imprima a sequência dos 100 próximos números inteiros, seguintes a um
+valor fornecido pela pessoa utilizadora.*/
+
+        int soma;
+        System.out.println("Digite o valor x, que será calculado o seus 100 números seguintes.");
+        soma = scanner.nextInt();
+        for (int x = 1; x <= 100; x++) {
+            System.out.println(soma + x);
+        }
+        }
+    }
