@@ -1,0 +1,103 @@
+/*Crie um programa em Java que exiba formas geométricas na tela. Um menu deve ser exibido com as seguintes opções: retângulo, diagonal superior esquerda, diagonal superior direita,
+diagonal inferior esquerda, diagonal inferior direita. As imagens devem ser formadas por asteriscos (*) e, a pessoa utilizadora deve informar a quantidade de colunas. Abaixo estão alguns
+exemplos das formas:*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int colunas;
+
+        System.out.println("Digite a quantidade de colunas: ");
+        colunas = scanner.nextInt();
+
+        int opcao;
+
+        do {
+            System.out.println("\nMenu de Formas Geométricas:"); //define oque será selecionado de oobjeto
+            System.out.println("1. Retângulo");
+            System.out.println("2. Diagonal Superior Esquerda");
+            System.out.println("3. Diagonal Superior Direita");
+            System.out.println("4. Diagonal Inferior Esquerda");
+            System.out.println("5. Diagonal Inferior Direita");
+            System.out.println("6. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) { // opções que foram apresentadas anteriormente
+                case 1:
+                    desenharRetangulo(colunas);
+                    break;
+                case 2:
+                    desenharDiagonalSuperiorEsquerda(colunas);
+                    break;
+                case 3:
+                    desenharDiagonalSuperiorDireita(colunas);
+                    break;
+                case 4:
+                    desenharDiagonalInferiorEsquerda(colunas);
+                    break;
+                case 5:
+                    desenharDiagonalInferiorDireita(colunas);
+                    break;
+                case 6:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+            }
+        } while (opcao != 6);
+        scanner.close();
+    }
+
+    public static void desenharRetangulo(int colunas) {
+        System.out.println("Retângulo:");
+        for (int i = 0; i < 3; i++) { // 3 linhas
+            for (int j = 0; j < colunas; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void desenharDiagonalSuperiorEsquerda(int colunas) {
+        System.out.println("Diagonal Superior Esquerda:");
+        for (int i = 0; i < colunas; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void desenharDiagonalSuperiorDireita(int colunas) {
+        System.out.println("Diagonal Superior Direita:");
+        for (int i = 0; i < colunas; i++) {
+            for (int j = 0; j < colunas - i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void desenharDiagonalInferiorEsquerda(int colunas) {
+        System.out.println("Diagonal Inferior Esquerda:");
+        for (int i = 0; i < colunas; i++) {
+            for (int j = colunas - 1; j >= i; j--) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void desenharDiagonalInferiorDireita(int colunas) {
+        System.out.println("Diagonal Inferior Direita:");
+        for (int i = 0; i < colunas; i++) {
+            for (int j = 0; j < i + 1; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
