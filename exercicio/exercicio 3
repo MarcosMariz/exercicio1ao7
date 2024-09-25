@@ -1,0 +1,47 @@
+ /*Na usina de Angra dos Reis, os técnicos analisam a perda de massa de um material radioativo.
+Sabendo-se que este perde 25% de sua massa a cada 30 segundos. Criar um programa que
+calcule iterativamente e imprima o tempo necessário para que a massa deste material se torne
+menor que 0, 10 grama. O programa pode calcular o tempo para várias massas.*/
+
+ import java.util.ArrayList;//Uma lista que permite acesso rápido aos elementos e é ideal para listas dinâmicas.
+ import java.util.List;   // define uma coleção ordenada de elementos
+ import java.util.Scanner;//entrada para o usuario digitar
+
+    public class Main {
+
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            List<Double> massasIniciais = new ArrayList<>();
+
+            System.out.println("Digite as massas iniciais (digite um valor '<=' a 0 para encerrar):");
+
+            while (true) {
+                double massa = scanner.nextDouble();
+                if (massa <= 0) {
+                    break; // Para a entrada quando um valor <= a 0 é digitado
+                }
+                massasIniciais.add(massa);
+            }
+            
+            for (double massa : massasIniciais) /*loop for-each (ou "enhanced for loop"): Os dois pontos (:) servem como um separador entre o tipo/variável do elemento e
+            a coleção que está sendo percorrida. Essa construção torna o código mais legível e fácil de entender.*/
+            {
+                int tempo = tempoParaReducaoDeMassa(massa);
+                System.out.printf("Tempo necessário para que %.2fg se torne menor que 0,1g: %d segundos%n", massa, tempo);
+            }
+            scanner.close();
+        }
+
+        public static int tempoParaReducaoDeMassa(double massaInicial) {
+            double massa = massaInicial;
+            int tempoTotal = 0;
+            final int intervalo = 30;
+            final double taxaReducao = 0.25;
+
+            while (massa >= 0.1) {
+                massa -= massa * taxaReducao;
+                tempoTotal += intervalo;
+            }
+            return tempoTotal;
+        }
+    }
